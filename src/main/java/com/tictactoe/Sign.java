@@ -14,4 +14,8 @@ public enum Sign {
     public char getSign() {
         return sign;
     }
+
+    public String toString(){
+        return String.valueOf(sign);
+    }
 }

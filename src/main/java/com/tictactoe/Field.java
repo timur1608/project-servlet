@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 public class Field {
     private final Map<Integer, Sign> field;
+    private Sign winner = Sign.EMPTY;
 
     public Field() {
         field = new HashMap<>();
@@ -39,6 +40,7 @@ public class Field {
                 .collect(Collectors.toList());
     }
 
+    public Sign getWinner(){ return winner;}
     public Sign checkWin() {
         List<List<Integer>> winPossibilities = List.of(
                 List.of(0, 1, 2),
@@ -54,7 +56,8 @@ public class Field {
         for (List<Integer> winPossibility : winPossibilities) {
             if (field.get(winPossibility.get(0)) == field.get(winPossibility.get(1))
                 && field.get(winPossibility.get(0)) == field.get(winPossibility.get(2))) {
-                return field.get(winPossibility.get(0));
+                winner = field.get(winPossibility.get(0));
+                return winner;
             }
         }
         return Sign.EMPTY;
